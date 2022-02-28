@@ -11,7 +11,7 @@ const {conf} = require('../lib/exports');
 
 module.exports = {
 
-    introMessage: () => {
+    introMessage: async () => {
 
         clear();
 
@@ -27,4 +27,4 @@ module.exports = {
 
     }
 
-}
+};

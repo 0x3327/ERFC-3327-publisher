@@ -7,14 +7,12 @@ const {green} = require("chalk");
 const fs = require('fs');
 const touch = require("touch");
 
-const {conf, files, github, repo, parser, compile, inquirer} = require('../lib/exports')
+const {conf, files, github, repo, parser, compile, inquirer, loadStateFrom_REPO_DB} = require('../lib/exports')
 
 
 const setup = async () => {
 
-    // load the current Repo into context
-    let fields = ['remoteRepoLink', 'remoteRepoOwner', 'remoteRepoName', 'repo.installed', 'repo.path', 'repo.folder'];
-    fields.map(field => conf.set(field, conf.get('REPO_DB')[conf.get('currentRepoId')][field]));
+    loadStateFrom_REPO_DB();
 
     // Check if repo is already configured
     if (!conf.get('repo.installed')) {
@@ -30,16 +28,10 @@ const setup = async () => {
 
         console.log(green('Repository cloned at ' + pathAnswers.repoPath + '/' + repoFolder));
 
-        conf.set('repo.installed', true);
-        conf.set('repo.path', pathAnswers.repoPath + '/' + repoFolder);
-        conf.set('repo.folder', repoFolder);
-        conf.set('my-research', []);
-
-        // update the REPO_DB to reflect the new changes
-        const REPO_DB = conf.get('REPO_DB');
-        fields = ['repo.installed', 'repo.path', 'repo.folder', 'my-research'];
-        fields.map(field => REPO_DB[conf.get('currentRepoId')][field] = conf.get(field));
-        conf.set('REPO_DB', REPO_DB);
+        conf.custStore('repo.installed', true);
+        conf.custStore('repo.path', pathAnswers.repoPath + '/' + repoFolder);
+        conf.custStore('repo.folder', repoFolder);
+        conf.custStore('my-research', []);
 
     }
 

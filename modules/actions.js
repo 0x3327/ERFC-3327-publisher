@@ -60,7 +60,7 @@ const setupNewResearch = async () => {
     if (!conf.get('my-research').filter(
         single => single['number'] === research.number
     ).length) {
-        conf.set('my-research', [...conf.get('my-research'), research]);
+        conf.custStore('my-research', [...conf.get('my-research'), research]);
     }
 
     console.log(chalk.green('All done. Happy writing!'));
@@ -78,8 +78,6 @@ const updateConf = async () => {
         const remoteRepoOwner = remoteRepoLink.split(':')[1].split('/')[0];
         let remoteRepoName = remoteRepoLink.split(':')[1].split('/')[1];
         remoteRepoName = remoteRepoName.substring(0, remoteRepoName.length - 4);
-
-        //const newRepoPath = inquirer.getPathForRepo(process.cwd());
 
         const REPO_DB = conf.get('REPO_DB');
 
@@ -123,7 +121,7 @@ const processCmd = async () => {
 
     // Quit the publisher
     if (answers.action === 'quit') {
-        return {quitSelected: true};
+        process.exit()
     }
 
     const repoPath = conf.get('repo.path');
@@ -140,7 +138,8 @@ const processCmd = async () => {
         await repo.checkoutBranch(repoPath, answer.research.branch);
         await compile.processResearch(`${repoPath}`, `${answer.research.name}.md`)
 
-        await new Promise(function(resolve){ setTimeout(resolve, 3000);}); 
+        await new Promise(function(resolve){ setTimeout(resolve, 2000);});
+
     }
 
     //Publishing research
@@ -163,12 +162,13 @@ const processCmd = async () => {
     }
 
     if (answers.action === 'changecfg') {
+
         await updateConf();
     }
 
-    await inquirer.pressEnterToContinue();
+    await new Promise(function(resolve){ setTimeout(resolve, 2000);});
 
-    return {quitSelected: false};
+    await inquirer.pressEnterToContinue();
 
 };
 

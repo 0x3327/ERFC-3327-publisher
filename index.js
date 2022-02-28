@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 
+const compatibility = require('./modules/compatibility');
+
+// needs to be run on the very start of the program
+compatibility.run();
+
 const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
@@ -7,22 +12,22 @@ const {green} = require("chalk");
 const fs = require('fs');
 const touch = require("touch");
 
-const {display, auth, localRepo, actions} = require('./modules/exports');
+const {display, auth, localRepo, actions, requirementCheck} = require('./modules/exports');
 
 const run = async () => {
 
     while (true) {
         try {
 
-            display.introMessage();
+            await display.introMessage();
+
+            await requirementCheck();
 
             await auth.authenticate();
 
             await localRepo.setup();
 
-            const {quitSelected} = await actions.processCmd();
-
-            if (quitSelected) break;
+            await actions.processCmd();
 
         } catch (err) {
             if (err) {
