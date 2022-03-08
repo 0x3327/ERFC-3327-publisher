@@ -1,0 +1,17 @@
+{
+    "env": {
+        "browser": false,
+        "node": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": ["airbnb", "prettier"],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "no-console": "off",
+        "spaced-comment": ["error", "never", { "markers": ["/"] }],
+        "no-await-in-loop": 0
+    }
+}

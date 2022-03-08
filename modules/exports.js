@@ -1,9 +1,17 @@
+const display = require('./display');
+const auth = require('./auth');
+const localRepo = require('./localRepo');
+const actions = require('./actions');
+const requirements = require('./requirements');
+const compatibility = require('./compatibility');
+const errorHandling = require('./errorHandling');
 
 module.exports = {
-
-    display: require('./display'),
-    auth: require('./auth'),
-    localRepo: require('./localRepo'),
-    actions: require('./actions'),
-    requirementCheck: require('./requirementCheck').requirementCheck,
+    display,
+    auth,
+    localRepo,
+    actions,
+    requirements,
+    compatibility,
+    errorHandling,
 };

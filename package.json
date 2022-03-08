@@ -1,36 +1,48 @@
 {
-  "name": "erfc",
-  "version": "1.0.6",
-  "description": "3327 tool for publishing submissions",
-  "main": "index.js",
-  "bin": {
-    "erfc": "./index.js"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "Git",
-    "CLI",
-    "3327",
-    "MVPWorkshop"
-  ],
-  "author": "Vladimir Lelicanin",
-  "license": "MIT",
-  "dependencies": {
-    "@octokit/auth-oauth-device": "^3.1.2",
-    "@octokit/core": "^3.5.1",
-    "@octokit/rest": "^18.12.0",
-    "chalk": "^3.0.0",
-    "clear": "^0.1.0",
-    "clui": "^0.3.6",
-    "configstore": "^5.0.0",
-    "figlet": "^1.2.4",
-    "inquirer": "^7.0.3",
-    "lodash": "^4.17.15",
-    "minimist": "^1.2.0",
-    "simple-git": "^1.129.0",
-    "slugify": "^1.6.5",
-    "touch": "^3.1.0"
-  }
+    "name": "erfc",
+    "version": "1.0.7",
+    "description": "3327 tool for publishing submissions",
+    "main": "index.js",
+    "bin": {
+        "erfc": "./index.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "Git",
+        "CLI",
+        "3327",
+        "MVPWorkshop"
+    ],
+    "author": "Vladimir Lelicanin",
+    "license": "MIT",
+    "dependencies": {
+        "@octokit/auth-oauth-device": "^3.1.2",
+        "@octokit/core": "^3.5.1",
+        "@octokit/rest": "^18.12.0",
+        "chalk": "^3.0.0",
+        "clear": "^0.1.0",
+        "clui": "^0.3.6",
+        "configstore": "^5.0.0",
+        "figlet": "^1.2.4",
+        "inquirer": "^7.0.3",
+        "lodash": "^4.17.15",
+        "minimist": "^1.2.0",
+        "simple-git": "^1.129.0",
+        "slugify": "^1.6.5",
+        "touch": "^3.1.0"
+    },
+    "devDependencies": {
+        "eslint": "^8.10.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-jsx-a11y": "^6.5.1",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-react": "^7.29.3",
+        "eslint-plugin-react-hooks": "^4.3.0",
+        "prettier": "^2.5.1"
+    }
 }
