@@ -1,0 +1,15 @@
+{
+    "repo": {
+        "link": "git@github.com:0x3327/3327-operations.git"
+    },
+    "RP-issue": {
+        "milestone": 9,
+        "reviewers": [
+            "schrink",
+            "milosnovitovic",
+            "andrejrakic",
+            "aleksandar-veljkovic"
+        ],
+        "valid-reactions-count": 2
+    }
+}
