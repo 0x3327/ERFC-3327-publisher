@@ -1,6 +1,6 @@
 {
     "name": "erfc",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "3327 tool for publishing submissions",
     "main": "index.js",
     "bin": {
