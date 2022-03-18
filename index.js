@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+const packageDetails = require('./package.json');
+var args = process.argv.slice(2);
+
 const {
     display,
     auth,
@@ -32,5 +35,9 @@ const run = async () => {
         }
     }
 };
-
-run();
+//Check for arguments
+if (args == "-v") {
+    console.log(packageDetails.version); 
+}   else {
+    run();
+}

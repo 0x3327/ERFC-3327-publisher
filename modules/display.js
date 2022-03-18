@@ -1,6 +1,8 @@
 const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
+const packageDetails = require('../package.json');
+
 
 module.exports = {
     introMessage: async () => {
@@ -16,6 +18,10 @@ module.exports = {
 
         console.log(
             chalk.green('Publishing tool for 3327 research repository.')
+        );
+
+        console.log(
+            chalk.green('You are using ERFC version:', `${packageDetails.version}.`)
         );
     },
 };
