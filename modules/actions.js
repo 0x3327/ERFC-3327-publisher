@@ -1,6 +1,8 @@
 const chalk = require('chalk');
 const fs = require('fs');
 const touch = require('touch');
+const fse = require('fs-extra');
+const exec = require('child_process').exec;
 
 const {
     conf,
@@ -157,13 +159,50 @@ const processCmd = async () => {
         console.log(chalk.green('Synchronised repository. All done!'));
     }
 
-    //Presentations
-    //TODO Implement presentations when presentation template is ready
-    if (
-        answers.action === 'createpresentation' ||
-        answers.action === 'compilepresentation'
-    ) {
-        console.log(chalk.red('Presentations are not yet implemented'));
+    //Creates a presentation folder and copies the template in it
+    if (answers.action === 'createpresentation') {
+
+        const answer = await inquirer.selectResearch(conf.get('my-research'));
+        const [_, authUser] = await github.getIssues();
+        const presentationPath = `${repoPath}/presentations/${answer.research.name}`
+        //If the directory exists, do nothing
+        if (fs.existsSync(presentationPath)) {
+            console.log(chalk.yellow("Presentation directory already exists."));
+            await utils.delay(1000);
+            await inquirer.pressEnterToContinue();
+        }
+        //If a directory doesn't exist, make one
+        fs.mkdirSync(presentationPath);
+
+        fse.copySync(
+            `${repoPath}/presentations/3327-presentations-template`,
+            `${presentationPath}`
+        )
+        fs.renameSync(
+            `${presentationPath}/presentation_template.qmd`,
+            `${presentationPath}/${answer.research.name}-presentation.qmd`
+        );
+
+        console.log(chalk.yellow('Created presentation directory at: ' + `${presentationPath}`));
+
+
+        await parser.parsePresentationTemplate(
+            `${presentationPath}/${answer.research.name}-presentation.qmd`,
+            answer.research.name,
+            answer.research.title,
+            authUser.data.name
+        );
+    }
+
+    // Runs Quarto preview on the selected presentation. Preview renders the work by default.
+    if (answers.action === 'compilepresentation') {
+
+        const answer = await inquirer.selectResearch(conf.get('my-research'));
+
+        exec(
+            `quarto preview ${answer.research.name}-presentation.qmd`,
+            { cwd: `${repoPath}/presentations/${answer.research.name}` },
+            function (err, stdout, stderr) { });
     }
 
     if (answers.action === 'changecfg') {

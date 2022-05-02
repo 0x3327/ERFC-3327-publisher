@@ -8,7 +8,7 @@ This is tool for publishing research to a 3327 repository.
 * [Git](https://git-scm.com/)
 * Git should be set to use [SSH keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) with empty password.
 * [GitHub account](https://github.com/)
-* [Qaurto](https://quarto.org/docs/get-started/)
+* [Quarto](https://quarto.org/docs/get-started/)
 * [Hub](https://hub.github.com/)
 * Make sure to set [personal access token](https://github.com/settings/tokens) `export GITHUB_TOKEN=<your_token>` on the first Hub run
 
