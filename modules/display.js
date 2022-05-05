@@ -3,7 +3,6 @@ const clear = require('clear');
 const figlet = require('figlet');
 const packageDetails = require('../package.json');
 
-
 module.exports = {
     introMessage: async () => {
         //Displays the publisher's intro message
@@ -21,7 +20,10 @@ module.exports = {
         );
 
         console.log(
-            chalk.green('You are using ERFC version:', `${packageDetails.version}.`)
+            chalk.green(
+                'You are using ERFC version:',
+                `${packageDetails.version}.`
+            )
         );
     },
 };

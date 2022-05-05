@@ -36,8 +36,8 @@ const run = async () => {
     }
 };
 //Check for arguments
-if (args == "-v") {
-    console.log(packageDetails.version); 
-}   else {
+if (args == '-v') {
+    console.log(packageDetails.version);
+} else {
     run();
 }
