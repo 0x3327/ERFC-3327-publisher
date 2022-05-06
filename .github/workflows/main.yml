@@ -23,3 +23,6 @@ jobs:
 
             - name: ESLint
               run: eslint . --ext .js,.jsx,.ts,.tsx
+
+            - name: Prettier
+              run: prettier --check .
