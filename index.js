@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 const packageDetails = require('./package.json');
-var args = process.argv.slice(2);
+
+const args = process.argv.slice(2);
 
 const {
     display,
@@ -19,7 +20,16 @@ const run = async () => {
     //needs to be run on the very start of the program
     compatibility.run();
 
-    while (true) {
+    //Add a CTRL-C listener
+    process.on('SIGINT', () => {
+        console.log('Caught interrupt signal...');
+
+        process.exit();
+    });
+
+    const runCondition = true;
+
+    while (runCondition) {
         try {
             await display.introMessage();
 
@@ -36,8 +46,8 @@ const run = async () => {
     }
 };
 //Check for arguments
-if (args == "-v") {
-    console.log(packageDetails.version); 
-}   else {
+if (args === '-v') {
+    console.log(packageDetails.version);
+} else {
     run();
 }
