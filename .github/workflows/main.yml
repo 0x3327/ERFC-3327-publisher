@@ -25,4 +25,4 @@ jobs:
               run: ./node_modules/.bin/eslint . --ext .js,.jsx,.ts,.tsx
 
             - name: Prettier
-              run: prettier --check .
+              run: ./node_modules/.bin/prettier --check .
