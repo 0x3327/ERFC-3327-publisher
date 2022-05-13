@@ -203,11 +203,15 @@ const processCmd = async () => {
         exec(
             `quarto preview ${answer.research.name}-presentation.qmd`,
             { cwd: `${repoPath}/presentations/${answer.research.name}` },
-            console.log(
-                chalk.yellow(
-                    "Nothing to compile. Presentation directory doesn't exist"
-                )
-            )
+            (error) => {
+                if (error) {
+                    console.log(
+                        chalk.yellow(
+                            'Presentation folder is not created, nothing to compile.'
+                        )
+                    );
+                }
+            }
         );
     }
 
