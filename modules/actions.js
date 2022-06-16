@@ -47,7 +47,7 @@ const setupNewResearch = async () => {
     await parser.parseResearchTemplate(
         `${repoPath}/_research/ERFC-${issue.value}.md`,
         `[ERFC - ${issue.value}] ${researchName}`,
-        issue.assignees ||  authUser.data.name
+        issue.assignees || authUser.data.name
     );
 
     console.log(chalk.green('Research assets folder created:'));
