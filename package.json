@@ -27,7 +27,7 @@
         "configstore": "6.0.0",
         "figlet": "^1.2.4",
         "fs-extra": "^10.1.0",
-        "inquirer": "^8.2.4",
+        "inquirer": "^9.0.0",
         "lodash": "^4.17.15",
         "minimist": "^1.2.0",
         "simple-git": "^3.7.1",
